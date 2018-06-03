@@ -8,12 +8,19 @@ public class PrimeMux {
     public static String generate(String input, Factoriser f) { // inject factoriser
         try {
             Integer n = Integer.parseInt(input);
-            return f.factorise(n).firstElement().toString();
-        }
-        catch (NumberFormatException | UndefinedException _) {
+            String result = "";
+
+            for (Integer i : f.factorise(n))
+                if (result.length() == 0) {
+                    result = i.toString();
+                }
+                else {
+                    result = result + " * " + i.toString();
+                }
+            return result;
+        } catch (NumberFormatException | UndefinedException _) {
             return "undefined";
         }
     }
-
 
 }
