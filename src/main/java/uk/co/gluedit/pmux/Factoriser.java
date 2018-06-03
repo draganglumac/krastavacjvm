@@ -14,13 +14,10 @@ public class Factoriser {
 
     private Vector<Integer> factorsFor(Integer n) {
         Vector<Integer> factors = new Vector<>();
-        int divisor = 2;
-        while (n > 1) {
+
+        for (int divisor = 2; n > 1; divisor++)
             for ( ; n % divisor == 0; n /= divisor)
                 factors.add(divisor);
-
-            divisor++;
-        }
 
         return factors;
     }

@@ -30,4 +30,3 @@ Feature: Given an integer find its prime factorisation
       | 20      | 2 * 2 * 5     |
       | 21      | 3 * 7         |
       | 22      | 2 * 11        |
-    
