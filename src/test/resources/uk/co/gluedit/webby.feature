@@ -7,4 +7,4 @@ Feature: Playground for Selenium and Page Objects.
     Then results will contain <result>
     Examples:
       | term  | result       |
-      | Tesla | Elon Musk    |
+      | Tesla | Wikipedia    |

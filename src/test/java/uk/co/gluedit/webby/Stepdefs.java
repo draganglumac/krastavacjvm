@@ -7,10 +7,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 import uk.co.gluedit.pages.GoogleHome;
 import uk.co.gluedit.pages.GoogleResults;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -18,14 +20,14 @@ import static org.junit.Assert.assertTrue;
 
 public class Stepdefs {
 
-    private WebDriver driver;
-    private GoogleHome googleHome;
+    @Inject private GoogleHome googleHome;
+    @Inject private GoogleResults googleResults;
 
     @Before("@web")
     public void createDriver() {
-//        driver = new HtmlUnitDriver();
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver = new HtmlUnitDriver();
+//        driver = new FirefoxDriver();
+//        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @After("@web")
