@@ -13,10 +13,10 @@ public class PageObjectModule {
     @Inject WebDriver driver;
 
     @Provides public GoogleHome provideGoogleHome() {
-        PageFactory.initElements(driver, GoogleHome.class);
+        return PageFactory.initElements(driver, GoogleHome.class);
     }
 
     @Provides public GoogleResults provideGoogleResults() {
-        PageFactory.initElements(driver, GoogleResults.class);
+        return PageFactory.initElements(driver, GoogleResults.class);
     }
 }

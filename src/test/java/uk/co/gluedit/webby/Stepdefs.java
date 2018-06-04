@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 @Component(modules = { PageObjectModule.class, HtmlUnitDriverModule.class })
 public class Stepdefs {
 
-    @Inject private WebDriver driver;
+    private WebDriver driver;
 
     @Inject private GoogleHome googleHome;
     @Inject private GoogleResults googleResults;

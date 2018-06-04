@@ -9,6 +9,6 @@ public class HtmlUnitDriverModule {
 
     @Provides
     HtmlUnitDriver provideDriver() {
-        new HtmlUnitDriver();
+        return new HtmlUnitDriver();
     }
 }
