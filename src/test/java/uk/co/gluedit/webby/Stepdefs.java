@@ -22,14 +22,14 @@ public class Stepdefs {
     private GoogleHome googleHome;
 
     @Before("@web")
-    public void beforeScenario() {
+    public void createDriver() {
 //        driver = new HtmlUnitDriver();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @After("@web")
-    public void afterScenario() {
+    public void closeDriver() {
         driver.close();
     }
 
