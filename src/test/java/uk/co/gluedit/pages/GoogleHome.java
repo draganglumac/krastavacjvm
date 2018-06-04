@@ -10,8 +10,6 @@ import javax.inject.Inject;
 
 public class GoogleHome {
 
-    @Inject private final WebDriver driver;
-
     @FindBy(name = "q")
     WebElement searchBox;
 

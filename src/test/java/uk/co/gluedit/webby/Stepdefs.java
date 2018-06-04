@@ -20,8 +20,8 @@ import static org.junit.Assert.assertTrue;
 
 public class Stepdefs {
 
-    @Inject private GoogleHome googleHome;
-    @Inject private GoogleResults googleResults;
+    private WebDriver driver;
+    private GoogleHome googleHome;
 
     @Before("@web")
     public void createDriver() {
