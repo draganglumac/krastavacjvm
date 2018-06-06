@@ -44,6 +44,12 @@
             <artifactId>dagger</artifactId>
             <version>2.16</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>2.18.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
