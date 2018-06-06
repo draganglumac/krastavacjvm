@@ -5,9 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -66,6 +67,24 @@ public class Tricks {
         }
         System.out.println();
         assertEquals(total, fileLength);
+    }
+
+    @Test
+    public void testClientServer() {
+        Thread serverThread = new Thread(() -> {
+            try {
+                ServerSocket sSock = new ServerSocket(9898);
+                Socket cSock = sSock.accept();
+                InputStream is = cSock.getInputStream();
+                // read the damn thing
+                cSock.close();
+                sSock.close();;
+            }
+            catch (IOException e) {
+                fail("Server error: " + e.getMessage());
+            }
+        });
+        serverThread.start();
     }
 
 }
