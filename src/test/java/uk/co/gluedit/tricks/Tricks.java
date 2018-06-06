@@ -1,17 +1,20 @@
 package uk.co.gluedit.tricks;
 
 import com.google.common.io.Resources;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.io.*;
+import java.net.Inet4Address;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
@@ -70,13 +73,16 @@ public class Tricks {
     }
 
     @Test
-    public void testClientServer() {
+    public void testClientServer() throws IOException, InterruptedException {
         Thread serverThread = new Thread(() -> {
             try {
                 ServerSocket sSock = new ServerSocket(9898);
                 Socket cSock = sSock.accept();
                 InputStream is = cSock.getInputStream();
-                // read the damn thing
+                byte[] bytes = IOUtils.toByteArray(is);
+
+                assertEquals("Hello world!", (new String(bytes)));
+
                 cSock.close();
                 sSock.close();;
             }
@@ -85,6 +91,13 @@ public class Tricks {
             }
         });
         serverThread.start();
+
+        sleep(100); // give the server a chance to start
+
+        Socket s = new Socket("localhost", 9898);
+        s.getOutputStream().write("Hello world!".getBytes());
+        s.close();
+        sleep(100);
     }
 
 }
