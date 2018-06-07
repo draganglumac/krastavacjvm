@@ -81,6 +81,7 @@ public class Tricks {
 
                 BufferedReader readMe = new BufferedReader(new InputStreamReader(cSock.getInputStream()));
                 assertEquals("Hello world!", readMe.readLine());
+                cSock.getOutputStream().write("Hello client!\n".getBytes());
 
                 cSock.close();
                 sSock.close();
@@ -89,13 +90,15 @@ public class Tricks {
             }
         });
         serverThread.start();
-
         sleep(100); // give the server a chance to start
 
         Socket s = new Socket("localhost", 9898);
-        s.getOutputStream().write("Hello world!".getBytes());
+        s.getOutputStream().write("Hello world!\n".getBytes());
+        BufferedReader buffy = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String answer = buffy.readLine();
+        assertEquals("Hello client!", answer);
+
         s.close();
-        sleep(100);
     }
 
 }
