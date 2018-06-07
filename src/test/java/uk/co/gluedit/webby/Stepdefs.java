@@ -11,6 +11,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 import uk.co.gluedit.pages.GoogleHome;
 import uk.co.gluedit.pages.GoogleResults;
+import uk.co.gluedit.pages.PageMaker;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -22,23 +23,25 @@ public class Stepdefs {
 
     private WebDriver driver;
     private GoogleHome googleHome;
+    private PageMaker pm;
 
     @Before("@web")
-    public void createDriver() {
+    public void setUp() {
         driver = new HtmlUnitDriver();
+        pm = new PageMaker(driver);
 //        driver = new FirefoxDriver();
 //        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     @After("@web")
-    public void closeDriver() {
+    public void tearDown() {
         driver.close();
     }
 
     @Given("^I open Google search$")
     public void i_open_Google_search() throws Exception {
         driver.get("http://www.google.com");
-        googleHome = PageFactory.initElements(driver, GoogleHome.class);
+        googleHome = pm.make(GoogleHome.class);
     }
 
     @When("^I search for (.*)$")
@@ -48,7 +51,7 @@ public class Stepdefs {
 
     @Then("^results will contain (.*)$")
     public void results_will_contain(String text) throws Exception {
-        GoogleResults searchResults = PageFactory.initElements(driver, GoogleResults.class);
+        GoogleResults searchResults = pm.make(GoogleResults.class);
         assertTrue(resultsContain(searchResults.resultHeadings(), text));
     }
 
