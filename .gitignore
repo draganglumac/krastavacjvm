@@ -1,4 +1,6 @@
 .idea/
 *.iml
 target/
+*.txt
+!src/test/resources/*.txt
 

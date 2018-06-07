@@ -34,18 +34,18 @@ public class Stepdefs {
     }
 
     @Given("^I open Google search$")
-    public void i_open_Google_search() throws Exception {
+    public void i_open_Google_search() {
         driver.get("http://www.google.com");
         googleHome = pm.make(GoogleHome.class);
     }
 
     @When("^I search for (.*)$")
-    public void i_search_for(String term) throws Exception {
+    public void i_search_for(String term) {
         googleHome.doSearch(term);
     }
 
     @Then("^results will contain (.*)$")
-    public void results_will_contain(String text) throws Exception {
+    public void results_will_contain(String text) {
         GoogleResults searchResults = pm.make(GoogleResults.class);
         assertTrue(resultsContain(searchResults.resultHeadings(), text));
     }
