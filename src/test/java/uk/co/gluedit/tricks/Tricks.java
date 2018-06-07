@@ -78,15 +78,13 @@ public class Tricks {
             try {
                 ServerSocket sSock = new ServerSocket(9898);
                 Socket cSock = sSock.accept();
-                InputStream is = cSock.getInputStream();
-                byte[] bytes = IOUtils.toByteArray(is);
 
-                assertEquals("Hello world!", (new String(bytes)));
+                BufferedReader readMe = new BufferedReader(new InputStreamReader(cSock.getInputStream()));
+                assertEquals("Hello world!", readMe.readLine());
 
                 cSock.close();
-                sSock.close();;
-            }
-            catch (IOException e) {
+                sSock.close();
+            } catch (IOException e) {
                 fail("Server error: " + e.getMessage());
             }
         });
