@@ -11,7 +11,7 @@ public class PageMaker {
         this.driver = driver;
     }
 
-    public <T> T make(Class<T> pageClass) throws Exception {
+    public <T> T make(Class<T> pageClass) {
         return PageFactory.initElements(driver, pageClass);
     }
 

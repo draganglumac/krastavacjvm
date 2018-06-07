@@ -3,7 +3,6 @@ package uk.co.gluedit.pmux;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import uk.co.gluedit.PrimeMux;
-import uk.co.gluedit.pages.PageMaker;
 
 import static org.junit.Assert.assertEquals;
 

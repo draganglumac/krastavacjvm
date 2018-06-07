@@ -6,16 +6,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.support.PageFactory;
 import uk.co.gluedit.pages.GoogleHome;
 import uk.co.gluedit.pages.GoogleResults;
 import uk.co.gluedit.pages.PageMaker;
 
-import javax.inject.Inject;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
