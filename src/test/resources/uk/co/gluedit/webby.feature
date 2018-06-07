@@ -6,5 +6,6 @@ Feature: Playground for Selenium and Page Objects.
     When I search for <term>
     Then results will contain <result>
     Examples:
-      | term  | result       |
-      | Tesla | Wikipedia    |
+      | term   | result        |
+      | Tesla  | Wikipedia     |
+      | Petrus | Gordon Ramsay |

@@ -21,16 +21,15 @@ import static org.junit.Assert.assertTrue;
 
 public class Stepdefs {
 
-    private WebDriver driver;
+    private final WebDriver driver = new HtmlUnitDriver();
     private GoogleHome googleHome;
     private PageMaker pm;
 
     @Before("@web")
     public void setUp() {
-        driver = new HtmlUnitDriver();
         pm = new PageMaker(driver);
 //        driver = new FirefoxDriver();
-//        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @After("@web")
