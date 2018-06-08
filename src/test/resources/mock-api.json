@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "author": "typicode",
+      "title": "json-server",
+      "id": 1
+    },
+    {
+      "id": "2",
+      "title": "glued-it",
+      "author": "dg"
+    },
+    {
+      "id": "3",
+      "author": "bob",
+      "title": "uncle"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
